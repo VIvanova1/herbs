@@ -1,0 +1,50 @@
+#bg-container{
+    background: url("https://thumbs.dreamstime.com/z/hanging-bunches-medical-herbs-mortar-bowl-dried-medicinal-plants-infusion-essential-oil-bottles-alternative-190393419.jpg?w=992");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.tm-paging-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    color: #999;
+    background-color: #EEEEEE;
+    margin: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.tm-paging-link:hover,
+.tm-paging-link.active {
+    background-color: #198754;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #198754;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px 30px 14px;
+    font-size: 1rem;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color:#086969;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+    background-color: #198754;
+    pointer-events: all;
+    cursor: not-allowed;
+}
+
+li .active{
+    color: #198754;
+}
