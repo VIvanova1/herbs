@@ -13,9 +13,12 @@
 
   .nav-link.active {
     border-bottom: 1px solid white;
-    color: #a3eab3;
   }
 
   .nav-item{
     margin:0 5px;
+  }
+
+  .active  {
+    border-bottom: 1px solid white;
   }

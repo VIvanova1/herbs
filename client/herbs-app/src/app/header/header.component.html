@@ -1,28 +1,31 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-success mx-auto">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success" aria-label="Fifth navbar example">
     <div class="container-fluid">
-        <a class="navbar-brand text-white">Herbs</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand">Herbs</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05"
+            aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto"> <!-- Center the content with mx-auto -->
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/" role="button">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/about" role="button">About</a>
-                </li>
-            </ul>
 
-            <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarsExample05">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/">Login</a>
+                    <a class="nav-link" type="button" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/">Register</a>
+                    <a class="nav-link" type="button" routerLink="/catalog" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Catalog</a>
                 </li>
             </ul>
+            <ul class="navbar-nav  mb-2 mb-lg-0 ">
+                <li class="nav-item">
+                    <a class="nav-link" type="button" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" type="button" routerLink="/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Register</a>
+                </li>
+            </ul>
+            <!-- <form>
+          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </form> -->
         </div>
     </div>
 </nav>
