@@ -4,6 +4,7 @@
     color: white;
     transition: color 0.3s ease;
     padding: 5px;
+    width: fit-content;
   }
 
   .nav-item:hover .nav-link {
