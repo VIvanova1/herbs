@@ -19,14 +19,13 @@ export class HerbsService {
 
   createHerb(data: NgForm) {
     return this.http
-      .post('/api/herbs/new', data, {
-        withCredentials: true,
-      })
+      .post(this.baseUrl +'/api/herbs/new', data)
       .subscribe({
         next: (value) => {
-          this.router.navigate(['/api/herbs/catalog']);
+          console.log('value', value);
+          // this.router.navigate(['/api/herbs/catalog']);
         },
-        error: (error) => console.log(error),
+        error: (error) => console.log(error.error),
       });
   }
 }

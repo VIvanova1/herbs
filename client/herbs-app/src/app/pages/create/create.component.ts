@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HerbsService } from '../../services/herbs.service';
-import { Herbs } from '../../models/herbs';
 
 @Component({
   selector: 'app-create',
@@ -14,6 +13,7 @@ export class CreateComponent {
   herbsService = inject(HerbsService);
 
   createForm(data: NgForm) {
-   this.herbsService.createHerb(data);
+    console.log('HerbsData', data.value);
+   this.herbsService.createHerb(data.value);
   }
 }

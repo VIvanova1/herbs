@@ -7,7 +7,7 @@ const config = {
     PORT: 3000,
     SECRET: "DEV",
     TOKEN_KEY: "token",
-    ALLOWED_ORIGINS: "http://lovalhost:4200",
+    ALLOWED_ORIGINS: "http://localhost:3000"  ,
   },
 };
 
