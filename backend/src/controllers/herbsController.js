@@ -39,7 +39,7 @@ router.post("/new", async (req, res) => {
     res.status(201).json(newHerb);
 
   } catch (err) {
-    res.status(500).json("Internal server error");
+    res.status(err.statusCode).json(err.message);
   }
 });
 
