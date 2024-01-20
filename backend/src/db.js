@@ -1,7 +1,9 @@
 const { mongoose } = require("mongoose");
+const connectionString  = require("./config/pass");
 
 
-mongoose.connect('mongodb+srv://venetaivanova:Ivanova1996V@cluster0.czclffj.mongodb.net/')
+mongoose.connect(connectionString)
+
     .then(() => console.log('DB connected'))
     .catch(err => console.log('DB Error, ', err.message));
 

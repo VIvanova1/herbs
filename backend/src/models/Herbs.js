@@ -21,15 +21,15 @@ const herbsSchema = new mongoose.Schema({
         minLength:[2, 'Description should be at least 2 characters long'],
         maxLength:[500, 'Description should be maximum 500 characters long']
     },
-    // owner: {
-    //     type: mongoose.Types.ObjectId,
-    //     ref: 'User',
-    //     required: true,
-    // },
+    owner: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
 });
 
 
 
 const Herbs = mongoose.model('Herbs', herbsSchema);
 
-module.exports = Creature;
+module.exports = Herbs;

@@ -32,24 +32,24 @@ app.use(express.json());
 app.use(routes);
 app.use(cookieParser());
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "public"));
-  },
-  filename: (req, file, cb) =>{
-    cb(null, Date.now() + path.extname(file.originalname))
-  }
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, path.join(__dirname, "public"));
+//   },
+//   filename: (req, file, cb) =>{
+//     cb(null, Date.now() + path.extname(file.originalname))
+//   }
+// });
 
-const upload = multer({storage});
-app.use((req, res, next)=>{
-  req.upload=upload;
-  next();
-})
+// const upload = multer({storage});
+// app.use((req, res, next)=>{
+//   req.upload=upload;
+//   next();
+// });
 
 app.use("/", async (req, res) => {
   try {
-    res.json("Hello");
+    res.json("Hello from server");
   } catch (err) {
     console.log(err);
     res.status(500).json("Internal server error");
