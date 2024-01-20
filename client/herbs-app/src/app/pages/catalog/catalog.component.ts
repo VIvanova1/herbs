@@ -2,7 +2,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { error } from 'console';
+import { HerbsService } from '../../services/herbs.service';
 
 @Component({
   selector: 'app-catalog',
@@ -14,12 +14,13 @@ import { error } from 'console';
 export class CatalogComponent implements OnInit {
 router = inject(Router);
 http = inject(HttpClient);
+herbsService = inject(HerbsService)
 baseUrl = environment.domain;
 allHerbs:any;
 
   constructor() {}
   ngOnInit (): void {
-   this.getAllHerbs().subscribe({
+   this.herbsService.getAllHerbs().subscribe({
     next: (value) => {
       console.log(value);
       this.allHerbs = value;
@@ -28,8 +29,5 @@ allHerbs:any;
    })
   }
 
-getAllHerbs(){
-  return this.http.get(this.baseUrl + '/api/herbs/catalog');
-}
 
 }
