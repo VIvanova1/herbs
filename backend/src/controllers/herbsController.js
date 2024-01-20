@@ -14,7 +14,6 @@ router.get("/catalog", async (req, res) => {
 });
 
 router.post("/new", async (req, res) => {
-  console.log('be');
   try {
     const { name, latin, image, description } = req.body;
     //add owner
@@ -40,8 +39,7 @@ router.post("/new", async (req, res) => {
     res.status(201).json(newHerb);
 
   } catch (err) {
-    console.error(err);
-    // res.status(500).json("Internal server error");
+    res.status(500).json("Internal server error");
   }
 });
 

@@ -13,7 +13,6 @@ export class CreateComponent {
   herbsService = inject(HerbsService);
 
   createForm(data: NgForm) {
-    console.log('HerbsData', data.value);
    this.herbsService.createHerb(data.value);
   }
 }

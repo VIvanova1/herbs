@@ -22,10 +22,11 @@ export class HerbsService {
       .post(this.baseUrl +'/api/herbs/new', data)
       .subscribe({
         next: (value) => {
-          console.log('value', value);
-          // this.router.navigate(['/api/herbs/catalog']);
+          this.router.navigate(['/api/herbs/catalog']);
         },
-        error: (error) => console.log(error.error),
+        error: (error) => {
+          console.log(error);
+        }
       });
   }
 }
