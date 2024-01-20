@@ -1,13 +1,13 @@
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { HerbsService } from '../../services/herbs.service';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, RouterLink],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css',
 })
