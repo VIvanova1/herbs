@@ -22,7 +22,6 @@ allHerbs:any;
   ngOnInit (): void {
    this.herbsService.getAllHerbs().subscribe({
     next: (value) => {
-      console.log(value);
       this.allHerbs = value;
     },
     error: (error: any) => console.log(error),
