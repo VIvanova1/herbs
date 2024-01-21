@@ -4,40 +4,51 @@ import { Router } from '@angular/router';
 import { environment } from '../environments/environment';
 import { NgForm } from '@angular/forms';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   router = inject(Router);
   http = inject(HttpClient);
   baseUrl = environment.domain;
-  constructor() { }
+  constructor() {}
 
   register(data: NgForm) {
     return this.http
-      .post(this.baseUrl +'/api/user/register', data,  {
+      .post(this.baseUrl + '/api/user/register', data, {
         withCredentials: true,
       })
       .subscribe({
-        next: (value) => {
-        },
+        next: (value) => {},
         error: (error) => {
           console.log(error);
-        }
+        },
       });
   }
 
-  login(data:NgForm){
-    return this.http.post(this.baseUrl +'/api/user/login', data, {
-      withCredentials: true,
-    })
-    .subscribe({
-      next: (value) => {
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    });
+  login(data: NgForm) {
+    return this.http
+      .post(this.baseUrl + '/api/user/login', data, {
+        withCredentials: true,
+      })
+      .subscribe({
+        next: (value) => {},
+        error: (error) => {
+          console.log(error);
+        },
+      });
+  }
+
+  logout() {
+    return this.http
+      .get(this.baseUrl + '/api/user/logout', {
+        withCredentials: true,
+      })
+      .subscribe({
+        next: (value) => {},
+        error: (error) => {
+          console.log(error);
+        },
+      });
   }
 }
