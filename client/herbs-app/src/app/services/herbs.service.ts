@@ -22,7 +22,7 @@ export class HerbsService {
       .post(this.baseUrl +'/api/herbs/new', data)
       .subscribe({
         next: (value) => {
-          this.router.navigate(['/api/herbs/catalog']);
+          // this.router.navigate([this.baseUrl,'/api/herbs/catalog']);
         },
         error: (error) => {
           console.log(error);
