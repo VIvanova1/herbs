@@ -4,7 +4,7 @@ const User = require("../models/User");
 const userManager = require("../managers/userManager");
 const errorHandler = require("../utils/error");
 const jwt = require("jsonwebtoken");
-const { TOKEN_KEY } = require("../config");
+const config = require("../config");
 
 
 router.post("/register", async (req, res) => {
@@ -15,14 +15,17 @@ router.post("/register", async (req, res) => {
 
   try {
 
-    const userExist = await userManager.findOne(email);
+    const userExist = await userManager.findOne({email});
     if (userExist) {
       throw errorHandler(409, "User already exist!");
     }
 
    const newUser= await userManager.register(user);
    const token = await generateToken(newUser);
-   res.cookie(TOKEN_KEY, token);
+
+   res.cookie(config.TOKEN_KEY, token,{httpOnly:true});
+   res.status(200).json(token);
+
 
   } catch (err) {
     res.status(err.statusCode).json(err.message);
@@ -50,3 +53,5 @@ async function generateToken(user) {
   const token = await jwt.sign(payload, config.SECRET, { expiresIn: "1d" });
   return token;
 }
+
+module.exports = router;

@@ -1,5 +1,7 @@
 const User = require("../models/User");
 
 
-exports.findOne = (email) => User.findOne(email);
+exports.findOne = (userData) => User.findOne({ email: userData.email });
+// exports.findOne = (email) => console.log(email);;
+
 exports.register = (user) => User.create(user);
