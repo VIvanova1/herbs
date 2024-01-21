@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
 @Injectable({
   providedIn: 'root',
 })
-export class HerbsService {
+export class HerbsService  {
   router = inject(Router);
   baseUrl = environment.domain;
   http = inject(HttpClient);

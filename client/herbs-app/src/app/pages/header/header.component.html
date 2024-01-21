@@ -7,6 +7,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExample05">
+         @if (isLogged) {
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" type="button" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
@@ -21,6 +22,7 @@
                     <a class="nav-link" type="button" (click)="logout()">Logout</a>
                 </li>
             </ul>
+         }@else {
             <ul class="navbar-nav  mb-2 mb-lg-0 ">
                 <li class="nav-item">
                     <a class="nav-link" type="button" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a>
@@ -29,6 +31,8 @@
                     <a class="nav-link" type="button" routerLink="/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Register</a>
                 </li>
             </ul>
+         }
+
             <!-- <form>
           <input class="form-control" type="text" placeholder="Search" aria-label="Search">
         </form> -->

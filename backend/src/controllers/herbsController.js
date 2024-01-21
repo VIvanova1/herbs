@@ -2,6 +2,8 @@ const Herbs = require("../models/Herbs");
 const errorHandler = require("../utils/error");
 const herbsManager = require("../managers/herbsManager.js");
 const router = require("express").Router();
+const { isAuth } = require('../middlewares/authMiddleware');
+
 
 router.get("/catalog", async (req, res) => {
   try {
@@ -12,7 +14,7 @@ router.get("/catalog", async (req, res) => {
   }
 });
 
-router.post("/new", async (req, res) => {
+router.post("/new", isAuth, async (req, res) => {
   try {
     const { name, latin, image, description } = req.body;
     //add owner
@@ -41,7 +43,7 @@ router.post("/new", async (req, res) => {
   }
 });
 
-router.get("/details/:id", async (req, res) => {
+router.get("/details/:id",isAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const herb = await herbsManager.findById(id);

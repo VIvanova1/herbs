@@ -12,6 +12,7 @@ import { UserService } from '../../services/user.service';
 export class LoginComponent {
   userService = inject(UserService);
   login(form: NgForm) {
-    this.userService.login(form.value)
+  this.userService.login(form.value)
+
   }
 }

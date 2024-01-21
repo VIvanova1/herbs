@@ -19,7 +19,10 @@ export class UserService {
         withCredentials: true,
       })
       .subscribe({
-        next: (value) => {},
+        next: (value) => {
+          localStorage.setItem('token', value.toString());
+          this.router.navigate(['herbs/catalog'])
+        },
         error: (error) => {
           console.log(error);
         },
@@ -32,7 +35,10 @@ export class UserService {
         withCredentials: true,
       })
       .subscribe({
-        next: (value) => {},
+        next: (value) => {
+          localStorage.setItem('token', value.toString());
+          this.router.navigate(['herbs/catalog'])
+        },
         error: (error) => {
           console.log(error);
         },
@@ -45,10 +51,21 @@ export class UserService {
         withCredentials: true,
       })
       .subscribe({
-        next: (value) => {},
+        next: (value) => {
+          localStorage.clear()
+        },
         error: (error) => {
           console.log(error);
         },
       });
+  }
+
+  isAuth() :boolean{
+    const token = localStorage.getItem('token')
+    if(token){
+      return true;
+    }else{
+      return false;
+    }
   }
 }
