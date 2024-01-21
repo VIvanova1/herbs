@@ -27,10 +27,10 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(cookieParser());
 app.use(express.json());
 
 app.use(routes);
-app.use(cookieParser());
 
 // const storage = multer.diskStorage({
 //   destination: (req, file, cb) => {

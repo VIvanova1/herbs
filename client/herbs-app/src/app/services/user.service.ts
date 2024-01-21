@@ -16,7 +16,9 @@ export class UserService {
 
   register(data: NgForm) {
     return this.http
-      .post(this.baseUrl +'/api/user/register', data)
+      .post(this.baseUrl +'/api/user/register', data,  {
+        withCredentials: true,
+      })
       .subscribe({
         next: (value) => {
         },
@@ -24,5 +26,18 @@ export class UserService {
           console.log(error);
         }
       });
+  }
+
+  login(data:NgForm){
+    return this.http.post(this.baseUrl +'/api/user/login', data, {
+      withCredentials: true,
+    })
+    .subscribe({
+      next: (value) => {
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 }
