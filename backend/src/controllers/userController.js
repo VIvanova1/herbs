@@ -4,10 +4,11 @@ const User = require("../models/User");
 const userManager = require("../managers/userManager");
 const errorHandler = require("../utils/error");
 const jwt = require("jsonwebtoken");
-const {SECRET, TOKEN_KEY} = require("../config");
+const { SECRET, TOKEN_KEY } = require("../config");
 
 router.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, repassword } = req.body;
+  console.log(req.body);
 
   const hashedPass = bcrypt.hashSync(password, 10);
   const user = new User({ name, email, password: hashedPass });
@@ -19,6 +20,8 @@ router.post("/register", async (req, res) => {
       throw errorHandler(404, "Email is required!");
     } else if (!password) {
       throw errorHandler(404, "Password is required!");
+    }
+
     const userExist = await userManager.findOne({ email });
     if (userExist) {
       throw errorHandler(409, "User already exist!");
@@ -30,6 +33,7 @@ router.post("/register", async (req, res) => {
     res.cookie(TOKEN_KEY, token, { httpOnly: true, secure: true });
     res.status(200).json(token);
   } catch (err) {
+    console.log('err', err);
     res.status(err.statusCode).json(err.message);
   }
 });
