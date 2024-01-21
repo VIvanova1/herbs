@@ -31,6 +31,6 @@ export class HerbsService {
   }
 
   getHerbById(id: any) {
-    return this.http.get(this.baseUrl + '/api/herbs/' + id);
+    return this.http.get(this.baseUrl + '/api/herbs/details/' + id);
   }
 }

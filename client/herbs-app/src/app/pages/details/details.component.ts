@@ -21,7 +21,7 @@ export class DetailsComponent implements OnInit{
     const herbId = params.get('id');
     this.herbsService.getHerbById(herbId).subscribe({
       next: (value: any) => {
-        console.log(value);
+        console.log('response', value);
         this.herbDetails = value;
       },
       error: (error: any) => console.log(error),
