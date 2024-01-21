@@ -37,7 +37,7 @@ export class UserService {
       .subscribe({
         next: (value) => {
           localStorage.setItem('token', value.toString());
-          this.router.navigate(['herbs/catalog'])
+          this.router.navigate(['herbs/catalog']);
         },
         error: (error) => {
           console.log(error);
@@ -52,7 +52,8 @@ export class UserService {
       })
       .subscribe({
         next: (value) => {
-          localStorage.clear()
+          localStorage.clear();
+          this.router.navigate(['/login']);
         },
         error: (error) => {
           console.log(error);
