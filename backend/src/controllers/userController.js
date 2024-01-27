@@ -30,8 +30,8 @@ router.post("/register", async (req, res) => {
     const newUser = await userManager.register(user);
 
     const token = await generateToken(newUser);
-    res.cookie(TOKEN_KEY, token, { httpOnly: true, secure: true });
-    res.status(200).json(token);
+    // res.cookie(TOKEN_KEY, token, { httpOnly: true, secure: true });
+    res.status(200).json({email,token});
   } catch (err) {
     console.log('err', err);
     res.status(err.statusCode).json(err.message);
@@ -61,8 +61,8 @@ router.post("/login", async (req, res) => {
     }
 
     const token = await generateToken(user);
-    res.cookie(TOKEN_KEY, token, { httpOnly: true, secure: true });
-    res.status(200).json(token);
+    // res.cookie(TOKEN_KEY, token, { httpOnly: true, secure: true });
+    res.status(200).json({email,token});
   } catch (err) {
     res.status(err.statusCode).json(err.message);
   }
