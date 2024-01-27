@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../environments/environment';
 import { NgForm } from '@angular/forms';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,9 +20,9 @@ export class UserService {
         withCredentials: true,
       })
       .subscribe({
-        next: (value) => {
-          localStorage.setItem('token', value.toString());
-          this.router.navigate(['herbs/catalog'])
+        next: (value:any) => {
+          this.router.navigate(['herbs/catalog']);
+          localStorage.setItem('token', value.token)
         },
         error: (error) => {
           console.log(error);
@@ -35,8 +36,8 @@ export class UserService {
         withCredentials: true,
       })
       .subscribe({
-        next: (value) => {
-          localStorage.setItem('token', value.toString());
+        next: (value:any) => {
+          localStorage.setItem('token', value.token)
           this.router.navigate(['herbs/catalog']);
         },
         error: (error) => {
@@ -59,14 +60,5 @@ export class UserService {
           console.log(error);
         },
       });
-  }
-
-  isAuth() :boolean{
-    const token = localStorage.getItem('token')
-    if(token){
-      return true;
-    }else{
-      return false;
-    }
   }
 }
