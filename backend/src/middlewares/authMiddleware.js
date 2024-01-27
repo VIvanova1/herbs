@@ -23,7 +23,7 @@ const errorHandler = require('../utils/error')
 // }
 
 exports.isAuth = (req, res, next) => {
-    if (!req.user) {
+    if (!req.headers.authorization) {
        throw errorHandler(401, 'Not unauthorized')
     }
     next();
