@@ -1,16 +1,31 @@
-import { Injectable, afterRender } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  Inject,
+  Injectable,
+  PLATFORM_ID,
+  afterRender,
+  signal,
+} from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
-  token:string | undefined;
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  constructor() {
-    afterRender(()=>{
+  token() {
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('token');
+    } else {
+      return undefined;
+    }
+  }
 
-      this.token=localStorage.getItem('token') ||undefined
-    })
+  isLogged() {
+    if (this.token()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
