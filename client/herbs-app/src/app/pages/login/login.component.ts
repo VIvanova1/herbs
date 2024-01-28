@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,10 @@ import { UserService } from '../../services/user.service';
 })
 export class LoginComponent {
   userService = inject(UserService);
-  login(form: NgForm) {
-  this.userService.login(form.value)
+  tokenService = inject(TokenService);
 
+  login(form: NgForm) {
+    this.userService.login(form.value);
+    this.tokenService.isLogged;
   }
 }

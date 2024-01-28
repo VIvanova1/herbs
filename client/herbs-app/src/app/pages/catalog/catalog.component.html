@@ -6,7 +6,9 @@
         <p class="font-italic">
             Оr join our family and create this catalog with us
         </p>
-        <a href="#" role="button" class="btn btn-primary px-5">Sign in</a>
+        @if (!isLogged) {
+            <a href="#" role="button" class="btn btn-primary px-5">Sign in</a>
+        }
     </div>
 </div>
 

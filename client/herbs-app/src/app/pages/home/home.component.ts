@@ -8,11 +8,8 @@ import { UserService } from '../../services/user.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 userService=inject(UserService);
-isLogged:boolean = false;
-ngOnInit (): void {
-  this.isLogged = this.userService.isAuth()
-}
+
 
 }
