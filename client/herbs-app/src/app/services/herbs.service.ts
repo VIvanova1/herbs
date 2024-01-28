@@ -20,7 +20,11 @@ export class HerbsService {
     return this.http.post(this.baseUrl + '/api/herbs/new', data);
   }
 
-  getHerbById(id: any) {
+  getHerbById(id: string) {
     return this.http.get(this.baseUrl + '/api/herbs/details/' + id);
+  }
+
+  editHerb(id: string, data: NgForm) {
+    return this.http.put(this.baseUrl + '/api/herbs/edit/' + id, data);
   }
 }

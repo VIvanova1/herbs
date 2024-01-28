@@ -52,7 +52,14 @@ export class CreateComponent implements OnInit {
     const token = this.tokenService.jwtdecrypt();
     const ownerId = token['_id'];
     if (this.isEdit) {
-      console.log(data.value, 'dataEdit');
+      this.herbsService.editHerb(ownerId, { ...data.value, ownerId }).subscribe({
+        next: (res: any) => {
+          console.log(res, 'res');
+        },
+        error: (error: any) => {
+          console.log(error);
+        },
+      })
     } else {
       this.herbsService.createHerb({ ...data.value, ownerId }).subscribe({
         next: (res: any) => {
