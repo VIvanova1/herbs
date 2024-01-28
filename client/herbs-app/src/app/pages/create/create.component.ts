@@ -17,6 +17,7 @@ export class CreateComponent implements OnInit {
   herbsService = inject(HerbsService);
   tokenService = inject(TokenService);
   route = inject(ActivatedRoute);
+  herbId:string='';
 
   herbDetails: Herbs = {
     id: '',
@@ -30,9 +31,9 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: any) => {
-      const herbId = params.get('id');
-      if (herbId) {
-        this.herbsService.getHerbById(herbId).subscribe({
+      this.herbId = params.get('id');
+      if (this.herbId) {
+        this.herbsService.getHerbById(this.herbId).subscribe({
           next: (res: any) => {
             this.herbDetails = res;
 
@@ -51,8 +52,9 @@ export class CreateComponent implements OnInit {
   createForm(data: NgForm) {
     const token = this.tokenService.jwtdecrypt();
     const ownerId = token['_id'];
+
     if (this.isEdit) {
-      this.herbsService.editHerb(ownerId, { ...data.value, ownerId }).subscribe({
+      this.herbsService.editHerb(this.herbId, { ...data.value, ownerId }).subscribe({
         next: (res: any) => {
           console.log(res, 'res');
         },

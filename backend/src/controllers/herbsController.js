@@ -57,4 +57,18 @@ router.get("/details/:id",isAuth, async (req, res) => {
   }
 });
 
+router.put("/edit/:id", isAuth, async(req, res)=>{
+  try {
+    const id =req.params.id;
+    const herb = req.body;
+
+    const newherb = await herbsManager.edit(id, herb);
+    console.log('newherb', newherb);
+    res.status(200).json(newherb);
+
+  } catch (err) {
+    res.status(err.statusCode).json(err.message);
+  }
+})
+
 module.exports = router;
