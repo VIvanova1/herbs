@@ -5,6 +5,7 @@
                 <div class="col-md-4"><img class="card-img-top mb-5 mb-md-0"
                         src="{{herbDetails.image}}" alt="..." /></div>
                 <div class="col-md-6">
+                    {{herbDetails}}
                     <div class="small mb-1">{{herbDetails.latin}}</div>
                     <h1 class="display-5 fw-bolder">{{herbDetails.name}}</h1>
                     <div class="fs-5 mb-5">
@@ -13,7 +14,7 @@
                     <p class="lead">{{herbDetails.description}}</p>
                        @if (isOwner) {
                         <div class="btn-group mx-auto">
-                            <button type="button" class="btn btn-outline-warning m-4" > Edit </button>
+                            <button type="button" (click)="editHerb(herbDetails)" class="btn btn-outline-warning m-4" > Edit </button>
                             <button type="button" class="btn btn-outline-danger m-4" > Delete </button>
                         </div>
                        }
