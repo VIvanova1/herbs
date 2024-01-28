@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { HerbsService } from '../../services/herbs.service';
 import { UserService } from '../../services/user.service';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-catalog',
@@ -18,8 +19,8 @@ export class CatalogComponent implements OnInit {
   herbsService = inject(HerbsService);
   baseUrl = environment.domain;
   allHerbs: any;
-  isLogged: boolean = false;
   userService = inject(UserService);
+  tokenService = inject(TokenService);
 
   constructor() {
 
