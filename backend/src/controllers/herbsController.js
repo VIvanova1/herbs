@@ -17,7 +17,7 @@ router.get("/catalog", async (req, res) => {
 router.post("/new", isAuth, async (req, res) => {
   try {
     const { name, latin, image, description } = req.body;
-    //add owner
+    const owner = req.user._id;
 
     if (!name) {
       throw errorHandler(404, "Name is required!");
@@ -28,12 +28,12 @@ router.post("/new", isAuth, async (req, res) => {
     } else if (!description) {
       throw errorHandler(404, "Description is required!");
     }
-
     const newHerb = new Herbs({
       name,
       latin,
       image,
       description,
+      owner
     });
 
     await herbsManager.create(newHerb);

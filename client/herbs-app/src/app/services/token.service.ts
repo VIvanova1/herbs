@@ -1,11 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
-import {
-  Inject,
-  Injectable,
-  PLATFORM_ID,
-  afterRender,
-  signal,
-} from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +22,11 @@ export class TokenService {
     } else {
       return false;
     }
+  }
+
+  jwtdecrypt(): any {
+    const newToken = this.token()
+    const decodedToken = jwtDecode(newToken!.toString());
+    return decodedToken
   }
 }

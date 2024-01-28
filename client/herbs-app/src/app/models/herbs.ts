@@ -4,4 +4,5 @@ export interface Herbs {
     latin: string;
     image: string;
     description: string;
+    owner:string,
   }
