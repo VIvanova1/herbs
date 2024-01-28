@@ -27,4 +27,8 @@ export class HerbsService {
   editHerb(id: string, data: NgForm) {
     return this.http.put(this.baseUrl + '/api/herbs/edit/' + id, data);
   }
+
+  deleteHerb(id: string) {
+    return this.http.delete(this.baseUrl + '/api/herbs/delete/' + id);
+  }
 }

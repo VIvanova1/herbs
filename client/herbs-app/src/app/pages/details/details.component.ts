@@ -26,8 +26,8 @@ export class DetailsComponent implements OnInit {
     latin: '',
     image: '',
     description: '',
-    owner: ''
-  })
+    owner: '',
+  });
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: any) => {
       const herbId = params.get('id');
@@ -52,8 +52,20 @@ export class DetailsComponent implements OnInit {
   }
 
   editHerb(herb: any) {
-    this.herb.set(herb)
+    this.herb.set(herb);
 
-    this.router.navigate(['/herbs/edit/',herb._id])
+    this.router.navigate(['/herbs/edit/', herb._id]);
+  }
+
+  deleteHerb(herb: any) {
+    const confirm = window.confirm('Do you want to remove this herb?');
+    if (confirm) {
+      this.herbsService.deleteHerb(herb._id).subscribe({
+        next: (res: any) => {
+          this.router.navigate(['/herbs/catalog' ]);
+        },
+        error: (error: any) => console.log(error),
+      });
+    }
   }
 }

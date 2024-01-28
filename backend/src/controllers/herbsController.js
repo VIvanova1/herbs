@@ -2,8 +2,7 @@ const Herbs = require("../models/Herbs");
 const errorHandler = require("../utils/error");
 const herbsManager = require("../managers/herbsManager.js");
 const router = require("express").Router();
-const { isAuth } = require('../middlewares/authMiddleware');
-
+const { isAuth } = require("../middlewares/authMiddleware");
 
 router.get("/catalog", async (req, res) => {
   try {
@@ -33,7 +32,7 @@ router.post("/new", isAuth, async (req, res) => {
       latin,
       image,
       description,
-      owner
+      owner,
     });
 
     await herbsManager.create(newHerb);
@@ -43,7 +42,7 @@ router.post("/new", isAuth, async (req, res) => {
   }
 });
 
-router.get("/details/:id",isAuth, async (req, res) => {
+router.get("/details/:id", isAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const herb = await herbsManager.findById(id);
@@ -51,24 +50,32 @@ router.get("/details/:id",isAuth, async (req, res) => {
       throw errorHandler(404, "Herb not found");
     }
     res.status(200).json(herb);
-
   } catch (err) {
     res.status(err.statusCode).json(err.message);
   }
 });
 
-router.put("/edit/:id", isAuth, async(req, res)=>{
+router.put("/edit/:id", isAuth, async (req, res) => {
   try {
-    const id =req.params.id;
+    const id = req.params.id;
     const herb = req.body;
 
     const newherb = await herbsManager.edit(id, herb);
-    console.log('newherb', newherb);
     res.status(200).json(newherb);
-
   } catch (err) {
     res.status(err.statusCode).json(err.message);
   }
-})
+});
+
+
+router.delete("/delete/:id", isAuth, async (req, res) => {
+  try {
+    const id = req.params.id;
+    await herbsManager.delete(id);
+  } catch (err) {
+    console.log('err',);
+    res.status(err.statusCode).json(err.message);
+  }
+});
 
 module.exports = router;
