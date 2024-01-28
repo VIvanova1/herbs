@@ -11,10 +11,12 @@
                         <span class="text-decoration">{{herbDetails.name}}</span>
                     </div>
                     <p class="lead">{{herbDetails.description}}</p>
+                       @if (isOwner) {
                         <div class="btn-group mx-auto">
                             <button type="button" class="btn btn-outline-warning m-4" > Edit </button>
                             <button type="button" class="btn btn-outline-danger m-4" > Delete </button>
                         </div>
+                       }
                 </div>
             </div>
         </div>

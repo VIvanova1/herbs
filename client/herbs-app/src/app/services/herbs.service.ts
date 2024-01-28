@@ -7,8 +7,7 @@ import { NgForm } from '@angular/forms';
 @Injectable({
   providedIn: 'root',
 })
-export class HerbsService  {
-  router = inject(Router);
+export class HerbsService {
   baseUrl = environment.domain;
   http = inject(HttpClient);
   constructor() {}
@@ -18,16 +17,7 @@ export class HerbsService  {
   }
 
   createHerb(data: NgForm) {
-    return this.http
-      .post(this.baseUrl +'/api/herbs/new', data)
-      .subscribe({
-        next: (value) => {
-          // this.router.navigate([this.baseUrl,'/api/herbs/catalog']);
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
+    return this.http.post(this.baseUrl + '/api/herbs/new', data);
   }
 
   getHerbById(id: any) {
