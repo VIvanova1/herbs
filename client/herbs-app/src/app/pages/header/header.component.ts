@@ -23,11 +23,17 @@ import { TokenService } from '../../services/token.service';
 export class HeaderComponent {
   userService = inject(UserService);
   tokenService = inject(TokenService);
-  constructor() {}
+
+  isLoggedIn: boolean = false;
+  constructor() {
+    afterRender(() => {
+      this.tokenService.isLoggedIn$.subscribe((res) => {
+        this.isLoggedIn = this.tokenService.isLoggedIn();
+      });
+    });
+  }
 
   logout() {
     this.userService.logout();
   }
-
-
 }

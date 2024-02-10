@@ -14,35 +14,15 @@ export class UserService {
   constructor() {}
 
   register(data: NgForm) {
-    return this.http
-      .post(this.baseUrl + '/api/user/register', data, {
-        withCredentials: true,
-      })
-      .subscribe({
-        next: (value:any) => {
-          this.router.navigate(['herbs/catalog']);
-          localStorage.setItem('token', value.token)
-        },
-        error: (error) => {
-          console.log(error);
-        },
-      });
+    return this.http.post(this.baseUrl + '/api/user/register', data, {
+      withCredentials: true,
+    });
   }
 
   login(data: NgForm) {
-    return this.http
-      .post(this.baseUrl + '/api/user/login', data, {
-        withCredentials: true,
-      })
-      .subscribe({
-        next: (value:any) => {
-          localStorage.setItem('token', value.token)
-          this.router.navigate(['herbs/catalog']);
-        },
-        error: (error) => {
-          console.log(error);
-        },
-      });
+    return this.http.post(this.baseUrl + '/api/user/login', data, {
+      withCredentials: true,
+    });
   }
 
   logout() {

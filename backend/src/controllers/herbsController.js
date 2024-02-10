@@ -72,9 +72,10 @@ router.delete("/delete/:id", isAuth, async (req, res) => {
   try {
     const id = req.params.id;
     await herbsManager.delete(id);
+    res.status(200).json();
   } catch (err) {
-    console.log('err',);
-    res.status(err.statusCode).json(err.message);
+    // console.log('err -', err);
+    res.status(err.statusCode).json({error:err.message});
   }
 });
 

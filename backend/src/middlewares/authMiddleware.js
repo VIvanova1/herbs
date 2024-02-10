@@ -23,9 +23,12 @@ exports.auth = async (req, res, next) => {
 };
 
 exports.isAuth = (req, res, next) => {
-  //ToDo: check
-  if (!(req.headers.authorization)) {
-    throw errorHandler(401, "Not unauthorized");
+
+  // console.log(req.headers, 'headers');
+  if(!req.headers.authorization){
+    // console.log('headers(no-auth)', req.headers, 'headers');
+  throw errorHandler(401, "Not authorized");
+
   }
   next();
 };

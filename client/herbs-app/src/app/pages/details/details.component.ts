@@ -62,9 +62,11 @@ export class DetailsComponent implements OnInit {
     if (confirm) {
       this.herbsService.deleteHerb(herb._id).subscribe({
         next: (res: any) => {
-          this.router.navigate(['/herbs/catalog' ]);
+          this.router.navigate(['/herbs/catalog']);
         },
-        error: (error: any) => console.log(error),
+        error: (error: any) => {
+          console.log(error.error);
+        },
       });
     }
   }

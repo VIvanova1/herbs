@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,11 +9,13 @@ import { jwtDecode } from 'jwt-decode';
 export class TokenService {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
+  isLoggedIn$ = new BehaviorSubject<boolean>(false);
+
   token() {
     if (isPlatformBrowser(this.platformId)) {
       return localStorage.getItem('token');
-    } else {
-      return undefined;
+    }else{
+     return null;
     }
   }
 
@@ -28,5 +31,9 @@ export class TokenService {
     const newToken = this.token()
     const decodedToken = jwtDecode(newToken!.toString());
     return decodedToken
+  }
+
+  isLoggedIn(){
+    return !!localStorage.getItem("token");
   }
 }
