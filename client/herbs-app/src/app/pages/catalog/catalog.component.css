@@ -1,7 +1,8 @@
 #bg-container{
-    background: url("https://thumbs.dreamstime.com/z/hanging-bunches-medical-herbs-mortar-bowl-dried-medicinal-plants-infusion-essential-oil-bottles-alternative-190393419.jpg?w=992");
+    background: url("https://www.shutterstock.com/image-photo/spice-background-top-view-seasoning-260nw-758273548.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
+    filter: saturate(0.5);
 }
 
 .tm-paging-link {
@@ -47,4 +48,41 @@
 
 li .active{
     color: #198754;
+}
+h1, p{
+    font-weight: 800;
+}
+
+h1{
+    text-shadow: 6px 4px black;
+}
+
+p{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: none;
+
+}
+
+.card figure{
+    height: 17rem;
+}
+
+img{
+    width: auto;
+    height: 100%;
+    margin-top: 5px;
+    border-radius: 25px;
+}
+
+.herb-name{
+    padding-left: 10px;
+    font-weight: bold;
 }

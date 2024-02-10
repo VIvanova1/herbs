@@ -7,10 +7,7 @@
                     <p class="lead fw-normal text-dark-50 mb-4">
                         Browse available herbs and learn about their properties or join our family and add new and unknown herbs</p>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                        <a class="btn btn-success btn-lg px-4 me-sm-3" href="#features">Catalog</a>
-                       <!-- @if (!isLogged) {
-                        <a class="btn btn-outline-success btn-lg px-4" href="#!">Register</a>
-                       } -->
+                        <a class="btn btn-success btn-lg px-4 me-sm-3" routerLink="herbs/catalog" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Catalog</a>
                     </div>
                 </div>
             </div>
